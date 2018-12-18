@@ -11,7 +11,6 @@ moveList = []
 # assign those variables from sys input
 # works regardless of order (not checked)
 for k in range(1, len(sys.argv)):
-    sys.argv[k] = sys.argv[k]
     if len(sys.argv[k]) == 64:
         startboard = sys.argv[k].lower()
     elif len(sys.argv[k]) in (1, 2):
