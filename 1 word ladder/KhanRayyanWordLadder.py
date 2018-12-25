@@ -1,7 +1,3 @@
-import time
-import math
-import sys
-
 '''
 word ladder lab, to turn in friday, september 14.
 
@@ -13,6 +9,11 @@ comparing the 5000 words in the file to each other), this
 should run significantly (about 5000/26 times) better 
 than average. 
 '''
+
+import time
+import math
+import sys
+
 
 start = time.clock()
 file = open("words.txt", "r")
