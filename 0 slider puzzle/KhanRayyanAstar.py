@@ -1,7 +1,3 @@
-import time
-import sys
-import heapq
-
 '''
 A-star for 15-puzzle, to turn in Friday, 10/26.
 
@@ -15,6 +11,10 @@ the following puzzles, and then outputs the puzzle, puzzle number,
 time to solve the puzzle, and sequence of indices the "space" moves
 to in order for the puzzle to match the goal state. 
 '''
+
+import time
+import sys
+import heapq
 
 
 # either sys input of a file or eckel.txt
