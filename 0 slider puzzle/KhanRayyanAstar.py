@@ -5,7 +5,7 @@ import heapq
 '''
 A-star for 15-puzzle, to turn in Friday, 10/26.
 
-Goal is to run the first 51 (of 52) puzzles 'eckel.txt' in 
+Goal is to run the puzzles 'eckel.txt' in 
 as little time as possible. This takes about 10 minutes, which was 
 about twice the class average and earned a grade of 96.25%. 
 
