@@ -3,7 +3,7 @@ import sys
 import heapq
 
 '''
-A-star for 15-puzzle, to turn in Friday, 10/26
+A-star for 15-puzzle, to turn in Friday, 10/26.
 
 Goal is to run the first 51 (of 52) puzzles 'eckel.txt' in 
 as little time as possible. This takes about 10 minutes, which was 
@@ -54,8 +54,8 @@ for n in range(PZLSIZE):
 # COORDINATES for manhattan distances, top left being (0,0)
 COORDINATES = [(k % SIDELEN, k // SIDELEN) for k in range(PZLSIZE)]
 
-# dict Δx + Δy for one swap
 def getMnht(from_, to_):
+    # dict Δx + Δy for one swap
     return abs((COORDINATES[from_][0]) - (COORDINATES[to_][0])) \
            + (abs((COORDINATES[from_][1]) - (COORDINATES[to_][1])))
 
@@ -78,45 +78,49 @@ for from_ in range(PZLSIZE):
 
 # helper methods:
 
-# is the puzzle solvable for the given goal state? returns true/false
 def solvable(puzzle, GOAL='_abcdefghijklmno'):
-    inversions = len([item for sublist in[[k for k in puzzle[puzzle.find(n) + 1:]
-                                           if k != '_' and n > k] for n in puzzle if n != '_']
+    # is the puzzle solvable for the given goal state? returns true/false
+
+    inversions = len([item for sublist in
+                      [[k for k in puzzle[puzzle.find(n) + 1:]
+                        if k != '_' and n > k] for n in puzzle if n != '_']
                       for item in sublist])
+
     if SIDELEN % 2 == 0: # have to account for rows in even sided puzzles
         rowDifference = (puzzle.find('_') // SIDELEN - GOAL.find('_') // SIDELEN)
         return rowDifference % 2 == inversions % 2
     return inversions % 2 == 0
 
 
-# returns the manhattan distance for the entire puzzle by adding them up index by index
 def mnhtPuzzle(puzzle, GOAL = '_abcdefghijklmno'):
+    # returns the manhattan distance for the entire puzzle
+    # by adding them up index by index
     return sum([MNHTCOORDINATES[index, GOALINDEXES[ch]]
                 for index, ch in enumerate(puzzle) if ch != '_'])
 
 
-# returns a string with the space and character in the neighboring index swapped
 def swapChars(num, space, puzzle): # space = to_, num = from_
+    # returns a string with the space and character in the neighboring index swapped
     if num < space:
         return puzzle[0:num] + '_' + puzzle[num + 1: space] + puzzle[num] + puzzle[space + 1:]
     return puzzle[0:space] + puzzle[num] + puzzle[space + 1: num] + '_' + puzzle[num + 1:]
 
 
-# returns a list containing (nbr puzzle, new space) for each possible neighbor
 def neighbors(puzzle, space):
+    # returns a list containing (nbr puzzle, new space) for each possible neighbor
     return [(swapChars(num, space, puzzle), num) for num in LOOKUPNBRS[space]]
     # change is to store location of the space in a tuple with the neighbor so we don't need .find
 
 
-# updates est by 0 or 2 depending on whether mnhtDist goes up or down
 def updateEst(from_, to_, ch, est):
+    # updates est by 0 or 2 depending on whether mnhtDist goes up or down
     if UPDATEMNHT[(from_, to_, ch)] == -1:
         return est
     return est + 2
 
 
-# called when goal is found in astar, returns list of puzzles back to start
 def getPath(nbr, lvl, closedSet):
+    # called when goal is found in astar, returns list of puzzles back to start
     pathList=[nbr]
     while lvl != 0:
         for n in neighbors(nbr, nbr.find('_')):
