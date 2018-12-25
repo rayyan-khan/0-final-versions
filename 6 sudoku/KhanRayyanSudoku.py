@@ -1,9 +1,5 @@
-import sys, time
-
-# sudoku final due 11-28-18
-# submit one day late due a bug with getBestPos using a > rather than <
-
 '''
+ sudoku final due 11-28-18
  not my best, was really tired this week
  a) didn't comment well, just tried to make things work until they did
  b) kind of messy/disorganized in general
@@ -19,6 +15,8 @@ import sys, time
     things. 
  - 12-3-18
 '''
+
+import sys, time
 
 # input:
 INPUT = open(sys.argv[1], 'r') if len(sys.argv) == 2 else open('puzzles.txt', 'r')
