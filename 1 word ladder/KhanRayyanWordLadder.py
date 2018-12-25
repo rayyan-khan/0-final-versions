@@ -2,7 +2,17 @@ import time
 import math
 import sys
 
-# rayyan khan
+'''
+word ladder lab, to turn in friday, september 14.
+
+word ladder was a short assignment concurrent with the 
+slider puzzle unit. the assignment sheet is in this folder.
+we spent about two days on it in class and after implementing
+the suggestion about letter swapping (rather than directly 
+comparing the 5000 words in the file to each other), this 
+should run significantly (about 5000/26 times) better 
+than average. 
+'''
 
 start = time.clock()
 file = open("words.txt", "r")
@@ -11,6 +21,7 @@ wordList = []
 
 for line in file:
     wordList.append(line.strip())
+
 
 def isNeighbor(word1, word2):
     matches = 0
@@ -22,12 +33,14 @@ def isNeighbor(word1, word2):
     else:
         return False
 
+
 def genKeys(word):
     keys = []
     for n in range(0, len(word)):
         key = word[0:n] + "_" + word[n+1:]
         keys.append(key)
     return keys
+
 
 def toGraph(list):
     dict = {}
@@ -49,11 +62,13 @@ def toGraph(list):
                 dict[w].remove(w)
     return dict
 
+
 def numPairs(dict):
     total = 0
     for k in dict:
         total = total + len(dict[k])
     return total/2
+
 
 def mostNeighbors(dict):
     mostNbrs = 0
@@ -65,12 +80,14 @@ def mostNeighbors(dict):
             mostNbrs = curr
     return nbr
 
+
 def hasNumNbrs(num, dict):
     ct = 0
     for k in dict:
         if len(dict[k])==num:
             ct = ct+1
     return ct
+
 
 def numLonePairs(dict):
     ct = 0
@@ -80,12 +97,14 @@ def numLonePairs(dict):
                 ct = ct + 1
     return ct/2
 
+
 def findDegrees(dict):
     degLst = []
     for k in dict:
         if len(dict[k]) not in degLst:
             degLst.append(len(dict[k]))
     return degLst
+
 
 def distictComponents(dict):
     sizes = set()
@@ -103,6 +122,7 @@ def distictComponents(dict):
             sizes.add(compSize)
     return sizes
 
+
 def k3(dict):
     k3 = 0
     for k in dict:
@@ -118,6 +138,7 @@ def k3(dict):
             if compSize == 3:
                 k3 = k3+1
     return k3/3
+
 
 def widestPair(dict):
     startWord = ''
@@ -135,8 +156,8 @@ def widestPair(dict):
             if compSize == 1625:
                 startWord = k
                 endWord = word
-    return("Start: ", startWord, " End: ", endWord)
 
+    return "Start: ", startWord, " End: ", endWord
 
 
 gr = toGraph(wordList)
@@ -176,8 +197,8 @@ print("Number of distinct degrees: ", len(lst))
 # part 9: print number of distict component sizes
 print("Component sizes: ", len(distictComponents(gr)))
 
-#part 10: print number of 3-cliques
+# part 10: print number of 3-cliques
 print("K3s: ", k3(gr))
 
-#bonus
+# bonus
 print(widestPair(gr))
