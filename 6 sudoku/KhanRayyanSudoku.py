@@ -16,7 +16,8 @@
  - 12-3-18
 '''
 
-import sys, time
+import sys
+import time
 
 # input:
 INPUT = open(sys.argv[1], 'r') if len(sys.argv) == 2 else open('puzzles.txt', 'r')
