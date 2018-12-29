@@ -1,7 +1,7 @@
 '''
 tic tac toe due 12-6-18
 will play a game of tic tac toe between a person and
-the computer if run from the command line. 
+the computer if run from the command line.
 '''
 
 import msvcrt
