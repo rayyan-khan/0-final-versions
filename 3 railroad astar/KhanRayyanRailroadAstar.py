@@ -34,6 +34,7 @@ openSetColor = 'white'
 edgeColor = '#003ea5'
 goalColor = '#00ffff'
 
+
 # helper methods
 def addNeighbor(station, neighbor):
     if len(dictNodes[station]) == 3:
@@ -41,8 +42,11 @@ def addNeighbor(station, neighbor):
     else:
         dictNodes[station] = (dictNodes[station][0], dictNodes[station][1], [neighbor])
 
-def calcDist(y1, x1, y2, x2):  # copy-pasted from the compsci website
-    #
+
+def calcDist(y1, x1, y2, x2):
+    # copy-pasted from
+    # https://compsci.sites.tjhsst.edu/ai/distanceDemo.py.txt
+
     # y1 = lat1, x1 = long1
     # y2 = lat2, x2 = long2
     # all assumed to be in decimal degrees
@@ -66,13 +70,16 @@ def calcDist(y1, x1, y2, x2):  # copy-pasted from the compsci website
     #
     return acos(sin(y1) * sin(y2) + cos(y1) * cos(y2) * cos(x2 - x1)) * R
 
+
 def transformLongitude(latitude):
     latitude = latitude + 137.1
     return latitude * 10.18
 
+
 def transformLatitude(longitude):
     longitude = longitude * -1 + 63
     return longitude * 11.8
+
 
 def drawLine(point1, point2, color):
     y1 = transformLatitude(dictNodes[point1][0])
@@ -87,9 +94,11 @@ def drawLine(point1, point2, color):
         w = 1
     canvas.create_line(x1, y1, x2, y2, fill=color, width=w)
 
+
 def drawPath(path):
     for station in range(len(path)-1):
         drawLine(path[station], path[station + 1], goalColor)
+
 
 def getPath(station, closedSet, lvl): # closedSet = {id: lvl}
     path = [station]
@@ -102,6 +111,7 @@ def getPath(station, closedSet, lvl): # closedSet = {id: lvl}
                 path.insert(0, nbr)
     drawPath(path)
     return path
+
 
 def output(astar):
     path, closedLen, openLen, totalDist, start, goal = astar
@@ -207,9 +217,6 @@ def astar(start, goal):
             return getPath(station, closedSet, lvl), len(closedSet), len(openSet), currentDist, startName, goalName
 
         if station in closedSet:
-            #for nbr in dictNodes[station][2]:
-            #    if nbr in closedSet and closedSet[nbr] == lvl - 1:
-            #        drawLine(station, nbr, edgeColor)
             continue
 
         else:
@@ -248,7 +255,6 @@ if len(sys.argv) == 5:
     endCity = ' '.join([sys.argv[3], sys.argv[4]])
 
 output(astar(startCity, endCity))
-#output(astar('Austin', 'Atlanta'))
 
 window.mainloop()
 
