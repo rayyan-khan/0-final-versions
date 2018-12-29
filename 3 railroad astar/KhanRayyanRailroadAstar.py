@@ -1,9 +1,27 @@
+'''
+railroad a-star lab due 11-2-18
+end of quarter assignment
+project: find the shortest distance between two
+cities and show the a-star search visually using
+tkinter.
+
+Files used:
+map2.gif: the background map that the cities (nodes)
+and search paths are drawn on.
+rrEdges.txt: each line contains the number IDs of
+two stations/nodes that have a track between
+them.
+rrNodeCity.txt: labels 20 of the station IDs with
+the name of the city they reside in.
+rrNodes.txt: each line contains the station ID number
+followed by its longitude and latitude.
+'''
+
 from tkinter import *
 from math import pi, acos, sin, cos
 import heapq
 import sys
 
-# rayyan khan
 
 # files with railroad info
 rrNodes = open('rrNodes.txt', 'r')  # id, latitude, longitude
