@@ -1,8 +1,21 @@
+'''
+hex problem due 11-9-18
+intro to constraint programming lab
+find out one possible way to label a hexagon
+subdivided into 24 triangles with the letters
+A - G such that no two of the same letter are
+adjacent, or find out if it is not possible.
+
+rip isinvalid -- that was a learning moment
+'''
+
 from tkinter import *
 import time
 
 startPzl = '......ABCDEFG...........' # each for an empty triangle
 setOfChoices = {'A', 'B', 'C', 'D', 'E', 'F', 'G'}  # possible labels
+
+
 def copies(tpl): # checks for copies within subhexagons
     seen = set()
     for label in tpl:
@@ -12,6 +25,7 @@ def copies(tpl): # checks for copies within subhexagons
             else:
                 seen.add(label)
     return False  # otherwise it's still valid
+
 
 def isInvalid(hexPzl):  # returns true if pzl is invalid, rewrite later maybe but idk
     hexTL = (hexPzl[0], hexPzl[1], hexPzl[2], hexPzl[6], hexPzl[7], hexPzl[8])
@@ -44,6 +58,7 @@ def isInvalid(hexPzl):  # returns true if pzl is invalid, rewrite later maybe bu
         if copies(tpl):
             return True  # true if the overall puzzle contains a subhex with copies, i.e. it's invalid
 
+
 def bruteForce(pzl):  # find a solution through bruteForcing recursively
     if isInvalid(pzl):  # throw it out if it's invalid
         #print(pzl)
@@ -60,6 +75,7 @@ def bruteForce(pzl):  # find a solution through bruteForcing recursively
             return result
 
     return ''  # failure
+
 
 start = time.clock()
 solution = bruteForce(startPzl)
