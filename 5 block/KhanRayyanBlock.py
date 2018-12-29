@@ -14,7 +14,7 @@ pieces meant to fit inside the area, also separated
 by either an 'x' or a space. Therefore, something
 like ">python KhanRayyanBlock.py 15x5 3 4 4 7 15x1 1 5 5x3"
 would be interpreted as you wanting to fit rectangles of
-sizes 3x4, 4x7, 15x1, 1x5, and 5x3 into the area.
+sizes 3x4, 4x7, 15x1, 1x5, and 5x3 into an area of 15x5.
 
 In the process of trying to fit the rectangles into the
 area, they might be rotated, which the output will
