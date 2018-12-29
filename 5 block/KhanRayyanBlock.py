@@ -1,3 +1,36 @@
+'''
+block problem due 11-14-18
+given a certain area, figure out how to arrange
+the given rectangular blocks so that they fit
+exactly. should be run from the command line, and
+the first two numbers of the arguments following
+the script are the height and width of the given
+area -- e.g. "> python KhanRayyanBlock.py 4x5"
+would denote an area of height 4 and width 5.
+They may be separated by either an 'x' or a space.
+The numbers following those describing the area
+are meant to denote the areas of the rectangular
+pieces meant to fit inside the area, also separated
+by either an 'x' or a space. Therefore, something
+like ">python KhanRayyanBlock.py 15x5 3 4 4 7 15x1 1 5 5x3"
+would be interpreted as you wanting to fit rectangles of
+sizes 3x4, 4x7, 15x1, 1x5, and 5x3 into the area.
+
+In the process of trying to fit the rectangles into the
+area, they might be rotated, which the output will
+reflect -- the height for a certain rotation will always
+be printed before its width. So if a rectangle is input
+as "3x4" but only fits into the area if it's vertically
+4 units, the output will show it as "4x3". The output
+lists the rectangles in the order of right to left, top
+to bottom. The first rectangle in the outputted sequence
+will be the uppermost, leftmost rectangle as it fits into
+the area, and the following one will be the highest one to
+its right, and so on. The counting always counts the
+highest one to the right until it hits the right edge of
+the area and wraps around, basically.
+'''
+
 import sys
 import time
 from tkinter import *
@@ -28,6 +61,7 @@ def areaAddsUp(boardw, boardh, blx): # to check if impossible before trying to s
         return False
     return True
 
+
 def printBoard(board):
     for key in board: # print each row
         print(' '.join(board[key])) # characters separated by a space
@@ -36,11 +70,11 @@ def printBoard(board):
     else:
         print('')
 
+
 def output(board):
     if board == False:
         return 'No solution.'
 
-    #printBoard(board)
     seen = set()
     output = []
     reverseChoices = {CHOICES[key]:key for key in CHOICES}
@@ -58,12 +92,13 @@ def output(board):
             height, width = BLOCKS[int(reverseChoices[label])] # get the h/w if its block
 
             if index + int(width) - 1 == row.rfind(label):
-            # if the last occurrence of the label is at the index + width
+                # if the last occurrence of the label is at the index + width
                 output.append('{}x{}'.format(height, width)) # add h, w to output
             else:
-            #otherwise put it in as w, h
+                # otherwise put it in as w, h
                 output.append('{}x{}'.format(width, height))
     return output
+
 
 def solve(board, currentRow, choices):
     if areaAddsUp(BOARDH, BOARDW, BLOCKS):
@@ -72,7 +107,7 @@ def solve(board, currentRow, choices):
         return 'Blocks do not fit area.'
 
 
-# repeatedly called:
+# repeatedly called
 def canAdd(width, height, topLeftCorner, board):
     x, y = topLeftCorner
     if (x + width) > BOARDW: # if adding block goes off the board width
@@ -82,6 +117,7 @@ def canAdd(width, height, topLeftCorner, board):
     elif board[y][x:x + width].count('.') < width: # if there is overlap
         return False
     return True
+
 
 def addBlock(height, width, blockNum, topLeftCorner, board): # height, width, block id, location, board
     x, y = topLeftCorner # column/row
@@ -97,7 +133,7 @@ def addBlock(height, width, blockNum, topLeftCorner, board): # height, width, bl
     return False # if the block doesn't fit in this space
 
 
-# method to find puzzle solution:
+# method to search for puzzle solution:
 def solve1(board, currentRow, choices):
     if '.' not in board[BOARDH - 1]: # if the bottom row is filled then its solved
         return board
