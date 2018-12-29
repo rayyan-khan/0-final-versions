@@ -71,8 +71,8 @@ def printDict(d):
         print(*d[k], sep=', ')
 
 
-numSpokes = 5 if len(sys.argv)<2 else int(sys.argv[1])
+numSpokes = 5 if len(sys.argv) <2 else int(sys.argv[1])
 steps = 12 if len(sys.argv)<3 else int(sys.argv[2])
-print("Ways to reach ", numSpokes*2 , " spots in a double spoked wheel in ", steps, " steps.")
+print("Ways to reach ", numSpokes*2, " spots in a double spoked wheel in ", steps, " steps.")
 printDict(bfs(numSpokes,steps))
 print('time=',time.clock()-start)
