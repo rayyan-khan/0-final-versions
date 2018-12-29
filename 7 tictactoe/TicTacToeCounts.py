@@ -1,8 +1,9 @@
-
-# intro to tic-tac-toe unit
-# due 12-3-18, turned in for full credit 12-5 due to Friday absence
-# produces tree to find completed tic-tac-toe boards and
-# categorize them by win, lose, or draw, and at how many steps
+'''
+intro to tic-tac-toe unit
+due 12-3-18, turned in for full credit 12-5 due to Friday absence
+produces tree to find completed tic-tac-toe boards and
+categorize them by win, lose, or draw, and at how many steps
+'''
 
 import time
 board = '.' * 9
