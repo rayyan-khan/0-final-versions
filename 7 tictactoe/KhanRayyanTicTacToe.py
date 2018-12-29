@@ -1,9 +1,11 @@
 import msvcrt
 import sys
 
-
-# tic tac toe final 12-5-18
-# due 12-6-18
+'''
+tic tac toe due 12-6-18
+will play a game of tic tac toe between a person and
+the computer if run from the command line. 
+'''
 
 
 # helpers
@@ -195,8 +197,11 @@ def play():
     # board (empty if not given), and number of moves made so far
 
     print('Your token is: {} Computer\'s token is: {}'
+          '\nThis is the empty board:'
           .format(personTkn, cptrTkn))
     printPzl(board)
+    print('These are the numbers that indicate each space on the board:')
+    printPzl('012345678')
 
     while True:  # keep making moves until the game finishes and exits
         if msvcrt.kbhit():  # if a key's been pressed w/o a getMove prompt
