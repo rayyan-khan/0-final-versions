@@ -7,6 +7,7 @@ the computer if run from the command line.
 import msvcrt
 import sys
 
+
 # helpers
 def isDone(pzl, filledPos):  # check whether game is finished
 
