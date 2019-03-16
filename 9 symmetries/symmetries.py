@@ -7,6 +7,9 @@ import sys
 # the printMatr method can be used to print
 # them line-by-line so that the matrices
 # make more sense visually.
+# Not all transformations are optimal in
+# terms of efficiency, but that was not the
+# goal of the lab.
 
 # import one or two arguments
 # if one: that is the matrix (as a string)
