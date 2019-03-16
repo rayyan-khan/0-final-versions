@@ -1,5 +1,13 @@
 import sys
 
+# this code is run from the command line
+# it takes in a matrix represented as a
+# string, and prints out all possible
+# transformations as a string. However,
+# the printMatr method can be used to print
+# them line-by-line so that the matrices
+# make more sense visually.
+
 # import one or two arguments
 # if one: that is the matrix (as a string)
 # if two: first is matrix (as a string),
