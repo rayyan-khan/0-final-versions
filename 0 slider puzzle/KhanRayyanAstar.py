@@ -2,7 +2,7 @@
 A-star for 15-puzzle, to turn in Friday, 10/26.
 
 Goal is to run the puzzles 'eckel.txt' in as little time as possible. 
-This takes about 10 minutes, which was about twice the class average 
+This takes about 10 minutes, which was about half the class average
 and earned a grade of 96.25%. 
 
 It opens a file specified from the command line (with a default of
