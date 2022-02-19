@@ -1,0 +1,54 @@
+
+Dear AI,
+
+It seems that director (and the ai site) has been down for two hours, and the sys admins have been notified around that time (thanks for those who wrote).  I have no information to give you at this point on what is happening.
+
+In the meantime ...
+
+Period 7 may not have heard: You should be trying to have 5 of this lab solved for Friday, and the rest by Monday (assuming the grader is not too long in rejoining us in this world).
+
+There will  NOT  be a quiz on Friday (sorry about that).  You may expect to go to Ms. Kim's room (211) after attendance has been taken (please allow 10 minutes for this).  She will have some comments on possible ways to approach this crossword problem.  Please be respectful to both Ms. Kim and your sub.  Afterwards, you will have work time.  Of course, you don't share out your successful code to others, but you may discuss how you approached the problem.
+
+While we are waiting for the grader to come back, here are some examples of tests that you should be able to pass (you'll need to change the dictionary file name):
+
+8x8 64 xwords.txt
+5x5 0 xwords.txt "V0x0Imbue" "V0x4Sunny"
+9x13 18 xwords.txt "V0x1Dog"
+15x15 39 xwords.txt "H0x0Mute" "V0x0mule" "V10x13Imbue" "H7x5#" "V3x4#" "H6x7#" "V11x3#"
+10x16 32 xwords.txt "V6x0#" "V9x3#" "H3x12#" "V0x9Substitute"
+9x15 24 xwords.txt "V0x7con" "V6x7rum"
+13x13 32 xwords.txt "H1x4#Toe#" "H9x2#" "V3x6#" "H10x0Scintillating" "V0x5stirrup" "H4x2##Ordained" "V0x1Tyro" "V0x12Hot" "V5x0Run"
+13x13 32 xwords.txt "V2x4#" "V1x9#" "V3x2#" "h8x2#moo#" "v5x5#two#" "h6x4#ten#" "v3x7#own#" "h4x6#orb#" "h0x5Easy"
+
+
+I think that your chances will be greatly enhanced if you do not use recursion (at least in the main routine for deciding where to place blocks after you have no more deductions).
+
+Here are the instructions from the website:
+
+This lab is for the creation of a structure that can hold a valid US-style crossword puzzle.
+The command line inputs to the script are:
+#x# where the two # symbols represent the height and width of the crossword.  The height will be in [3,15] while the width is in [3,30].
+#, where the # represents an integer for the number of blocks (black squares) the puzzle must have.
+
+The dictionary file name - it should be ignored for this lab.
+
+H#x#chars and V#x#chars where the two # symbols are the vertical and horizontal (0 based) position, respectively, of the indicated chars.  An H indicates a horizontal orientation, while a V indicates a vertical one.  These should be processed in the order encountered in the command line.
+
+NOTE WELL: If no US-style crossword rule precludes it (see below), and if no prior H or V entry precludes it, then any time at least three contiguous letters are placed (using a single H or V), the ends may be bracketed by a block (or edge).  This does not mandate placement of blocks at such indicated positions, but it may be done.
+The above paragraph does not apply if you use a combination of three singleton H and or V directives to form a three letter word.
+There will be a series of 10 problems (currently there are 8).
+
+Note that the block character is "#" (the use of # above is to indicate a number, and not as a character) and the open character is "-".  Since this might change, In your code, you should not have these inline, but rather set explicitly with:
+BLOCKCHAR = "#"
+OPENCHAR = "-"
+Internally, the protected character is
+PROTECTEDCHAR = "~"
+
+The rules for US-style crosswords:
+Block positions must be symmetric with respect to 180 degree rotation about the center.
+All letters must be in both a horizontal and vertical word.
+All words must be at least three letters.
+All non-block entries should be connected.
+No duplicate words in the crossword.
+Be well, play chess, solve crosswords, see you next week,
+Dr. G
